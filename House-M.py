@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn import linear_model
 import matplotlib.pyplot as plt
-d=pd.read_csv("House-price.csv")
+d=pd.read_csv("House-price-M.csv")
 print(d)
 print(d.bedrooms.median())
 d.bedrooms=d.bedrooms.fillna(d.bedrooms.median())
