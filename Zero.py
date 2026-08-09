@@ -46,20 +46,18 @@ fig, axes = plt.subplots(3,3,figsize=(15,10))
 fig.suptitle("Move Zeroes — Before vs After",fontsize=16,fontweight="bold",y=1.01)
 fig.patch.set_facecolor("#1E1E2E")
 
-ZERO_COLOR="#EF5350"   # red for zeros
-NONZERO_BEFORE="#90CAF9"  # blue for non-zeros (before)
-NONZERO_AFTER="#66BB6A"  # green for non-zeros (after)
+ZERO_COLOR="#EF5350"   
+NONZERO_BEFORE="#90CAF9" 
+NONZERO_AFTER="#66BB6A"  
 
 for ax,before,after,idx in zip(
     axes.flatten(),originals,test_cases,range(1, 10)
 ):
     x = np.arange(len(before))
 
-    # Before bars
     colors_before = [ZERO_COLOR if v == 0 else NONZERO_BEFORE for v in before]
     ax.bar(x - 0.2, before, width=0.35, color=colors_before, alpha=0.85, label="Before")
 
-    # After bars
     colors_after = [ZERO_COLOR if v == 0 else NONZERO_AFTER for v in after]
     ax.bar(x + 0.2, after,  width=0.35, color=colors_after,  alpha=0.85, label="After")
 
@@ -70,9 +68,9 @@ for ax,before,after,idx in zip(
         spine.set_edgecolor("#555577")
 
 legend_elements = [
-    mpatches.Patch(color=NONZERO_BEFORE, label="Non-zero (Before)"),
-    mpatches.Patch(color=NONZERO_AFTER,  label="Non-zero (After)"),
-    mpatches.Patch(color=ZERO_COLOR,     label="Zero"),
+    mpatches.Patch(color=NONZERO_BEFORE,label="Non-zero (Before)"),
+    mpatches.Patch(color=NONZERO_AFTER,label="Non-zero (After)"),
+    mpatches.Patch(color=ZERO_COLOR,label="Zero"),
 ]
 fig.legend(handles=legend_elements, loc="lower center", ncol=3,
            facecolor="#1E1E2E", labelcolor="white", fontsize=10,
@@ -80,9 +78,8 @@ fig.legend(handles=legend_elements, loc="lower center", ncol=3,
 
 plt.tight_layout()
 
-script_dir  = os.path.dirname(os.path.abspath(__file__))
-output_path = os.path.join(script_dir, "Zero-Figure.png")
-plt.savefig(output_path, dpi=150, bbox_inches="tight",
-            facecolor=fig.get_facecolor())
-print(f"\nSaved: {output_path}")
+script_dir  =os.path.dirname(os.path.abspath(__file__))
+output_path =os.path.join(script_dir, "Zero-Figure.png")
+plt.savefig(output_path, dpi=150, bbox_inches="tight",facecolor=fig.get_facecolor())
+print(f"\nSaved:{output_path}")
 plt.show()
